@@ -1,0 +1,95 @@
+-----------------------
+javasu!
+-----------------------
+Initial Window Prompt for map selection
+- Top has greeting label
+- Center has list with scroll bar
+- Bottom
+	- Open Editor button
+	- Play button
+	
+USAGE
+- Open Editor button
+	- See javasu! editor
+- Play Button
+	- Showtime Canvas appears
+		- window maximized
+	- Short delay before starting
+	- Play music
+		- display AR
+		- display hit object
+	- log hits
+		- Perfect(2), Good(1), Miss(0)
+	- misses
+		- remove AR and hit object from showtime canvas!
+	- Map/Song End
+		- Showtime Canvas displays results
+			- Accuracy
+			- Perfect
+			- Good
+			- Miss
+			- Simple score
+				- perfect * 2 + Good * 1
+				= Highscore saving?
+		- Return to Map Selection Menu
+
+-----------------------
+javasu! editor
+-----------------------
+Initial Window Prompt for filename selection
+- e.g. easyBeat
+Main Window Editor
+- Top
+	- WEST
+		- size [circle size]
+		- type of hit object selection
+	- CENTER
+		- beatmap configuration text editor
+	- EAST
+		- save button
+- Center has canvas area
+- Bottom
+	- play button
+	- song time slider
+
+USAGE
+- Press play to play audio
+- Click on canvas to place objects.
+	- Map mouse1, z, x
+- Right Click on canvas to remove objects.
+	- Map mouse2
+- Playback
+	- Placed circles appear as in-game
+		- i: w/ approach circle
+- Save button
+	- Create easyBeat.map if does not exist
+	- Overwrite easyBeat.map if it exists already
+
+-----------------------
+DATABASE STRUCTURE
+-----------------------
+2 files must match name:
+- easyBeat.mp3
+	- audio file
+- easyBeat.map
+	- circle map file
+
+BEAT.MAP
+- 1st line: beatmap configuration
+- [AR, After, Perfect, Good]
+	- AR: approach circle time
+		- e.g. 1 = appear 1s before hit-time
+	- After: how long to keep showing missed hit objects
+		- e.g. 1 = appear 1s after hit-time
+	- Perfect: +/- leniency time to count as perfect
+		- e.g. 200ms: if hit <200ms early or late, count as perfect
+	- Good: +/- leniency time to count as good
+		- e.g. 400ms: if hit <400ms early or late, count as good unless <200, then count as perfect
+
+- list of HIT OBJECTs
+- [type,time,size,xPos,yPos]
+	- type: circle, slider, spinner, etc
+	- time: hit-time
+	- size: circle diameter = 0.x of window size(percentage) based on x
+	- xPos: upper left xCoord, 0.x of window x size(percentage)
+	- yPos: upper left yCoord, 0.x of window y size(percentage)
