@@ -1,4 +1,4 @@
-# Javasu
+# Java Clicker
 A simple rhythm game built in Java
 
 Final project for CS151(OOP).  A rhythm game which allows you to both create and play levels.
